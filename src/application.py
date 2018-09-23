@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 import logging
 from twitter_client import Twitter_Handler
 
@@ -12,9 +12,13 @@ twitter_api_handler = Twitter_Handler()
 def test_server_online():
     return "Server is online"
 
-@application.route('/authurl', methods=['GET'])
-def get_authorization_url():
-    return twitter_api_handler.get_authorization_url()
+@application.route('/twitter/getVerifier', methods=['GET'])
+def get_verifier():
+    return redirect(twitter_api_handler.get_authorization_url())
+
+@application.route('/twitter/getAccessToken', methods=['GET'])
+def get_access_token_and_secret():
+    return twitter_api_handler.get_access_token_and_secret()
 
 if __name__ == "__main__":
     application.debug = True
