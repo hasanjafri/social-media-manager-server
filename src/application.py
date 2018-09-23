@@ -20,6 +20,26 @@ def get_verifier():
 def get_access_token_and_secret():
     return twitter_api_handler.get_access_token_and_secret()
 
+@application.route('/twitter/myInfo', methods=['GET'])
+def get_self_info():
+    return twitter_api_handler.get_self_info()
+
+@application.route('/twitter/allFollowers', methods=['GET'])
+def get_all_followers():
+    return twitter_api_handler.get_all_followers()
+
+@application.route('/twitter/directMessage', methods=['GET'])
+def send_direct_message():
+    return twitter_api_handler.send_direct_message()
+
+@application.route('/twitter/updateStatus', methods=['GET'])
+def update_status():
+    return twitter_api_handler.update_status()
+
+@application.route('/twitter/updateMediaStatus', methods=['GET'])
+def update_status_with_media():
+    return twitter_api_handler.update_status_with_media()
+
 if __name__ == "__main__":
     application.debug = True
     application.run(host='0.0.0.0', port=5000)
