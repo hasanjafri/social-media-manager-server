@@ -10,3 +10,6 @@ class User(Document):
     date_accessed = DateTimeField(default=datetime.datetime.utcnow)
     twitter_access_token = StringField(required=False)
     twitter_access_token_secret = StringField(required=False)
+    instagram_user = StringField(required=False)
+    instagram_password = StringField(required=False)
+    facebook_access_token = StringField(required=False)
